@@ -183,6 +183,7 @@ Link: [Google][googlelink]
 [googlelink]: https://google.com "Go google"
 ```
 
+Link: [Google][googlelink]
 [googlelink]: https://google.com 'Go google'
 
 - 외부 링크
@@ -192,7 +193,7 @@ Link: [Google][googlelink]
 적용예: [Google](https://google.com, "google link")
 ```
 
-[Google](https://google.com, 'google link')
+[Google](https://google.com)
 
 ## 10. 표
 
