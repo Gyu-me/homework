@@ -1,1 +1,90 @@
 /* 여기에 스타일을 구현해 주세요 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'SUIT', sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.avatars-title {
+  display: table;
+  margin: 30px auto 12px;
+  padding: 6px 16px;
+  background-color: #ffffff;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 상단 네비게이션 */
+.top-bar {
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.back-button {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-button:hover {
+  color: #007bff;
+}
+
+/* 아바타 전체 카드 디자인 추가! */
+.avatar-container {
+  width: 360px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* 아바타 */
+.avatar {
+  position: relative;
+  float: none;
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  margin: 10px;
+  transition: transform 0.2s ease;
+}
+
+/* 이미지 */
+.avatar img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid #f0f0f0;
+}
+
+/* 상태 점 */
+.status {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid white;
+}
+
+.status.online {
+  background-color: #4cfe88;
+}
+
+.status.offline {
+  background-color: #dbdbdb;
+}
