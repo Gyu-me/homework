@@ -1,1 +1,237 @@
-/* CSS를 활용하여 레이아웃 및 스타일링을 완성해주세요 */
+:root {
+  --green: #03cf5d;
+  --focus: #24388d;
+  --border-gray: #dadada;
+  --error-bg: #e9f0fd;
+  --error-text: #ff0000;
+  --black: #121212;
+  --text-gray: #999999;
+
+  --side-gap: 1.25rem;
+  --max-width: 31.25rem; /* -> 500px */
+}
+
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+body {
+  font-size: 1rem;
+  color: var(--black);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+/* Top Bar */
+.top-bar {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 3rem;
+
+  display: flex;
+  align-items: center;
+  padding-inline: var(--side-gap);
+
+  background-color: #fff;
+  z-index: 10;
+}
+
+/* Logo */
+.login-container {
+  margin-block-start: 5rem;
+  margin-block-end: 2.5rem;
+}
+
+.logo {
+  inline-size: 230px;
+  margin-inline: auto;
+
+  svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 4px;
+  }
+}
+
+/* Main */
+.main {
+  padding-inline: var(--side-gap);
+
+  @media (min-width: 48rem) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Form */
+.mainform {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 48rem) {
+    inline-size: 100%;
+    max-inline-size: var(--max-width);
+  }
+
+  /* ---------- 입력 그룹 ---------- */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 0.625rem;
+
+    input {
+      inline-size: 100%;
+      block-size: 2.8125rem;
+      padding-inline: 0.875rem;
+
+      font-size: 0.875rem;
+      border: 1px solid var(--border-gray);
+      background-color: #fff;
+      outline: none;
+
+      &:hover {
+        background-color: var(--error-bg);
+      }
+
+      &:focus {
+        border-color: var(--green);
+        background-color: var(--error-bg);
+      }
+
+      &:not(:placeholder-shown):invalid {
+        border-color: var(--error-text);
+
+        + .err {
+          display: block;
+        }
+      }
+    }
+
+    .err {
+      display: none;
+      font-size: 0.75rem;
+      color: var(--error-text);
+      margin-block-start: 0.25rem;
+    }
+  }
+
+  /* ---------- 로그인 버튼 ---------- */
+  button {
+    margin-block-start: 1.25rem;
+    block-size: 2.8125rem;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    background-color: var(--green);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  /* 로그인 클릭 (아무 것도 입력 안 했을 때) */
+  &:has(:user-invalid) {
+    .err {
+      display: block;
+    }
+
+    input:invalid {
+      border-color: var(--green);
+    }
+  }
+}
+
+/* Options */
+.options {
+  display: flex;
+  align-items: center;
+  margin-block-start: 0.625rem;
+
+  /* 로그인 상태 유지 */
+  .loginState {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    input {
+      appearance: none;
+      inline-size: 1.5rem; /* 24px */
+      block-size: 1.5rem;
+      margin-inline-end: 0.3125rem; /* 5px */
+      background: url('../img/unchecked.svg') no-repeat center;
+    }
+
+    input:checked {
+      background-image: url('../img/checked.svg');
+    }
+  }
+
+  /* IP 보안 */
+  .ipSecurity {
+    display: none;
+    margin-inline-start: auto;
+    align-items: center;
+
+    @media (min-width: 48rem) {
+      display: flex;
+    }
+
+    .ipToggle {
+      display: inline-flex;
+      align-items: center;
+      margin-inline-start: 0.3125rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--black);
+
+      input {
+        appearance: none;
+      }
+
+      .off {
+        color: var(--text-gray);
+      }
+
+      .on {
+        display: none;
+        color: var(--green);
+      }
+
+      input:checked ~ .off {
+        display: none;
+      }
+
+      input:checked ~ .on {
+        display: inline;
+      }
+
+      &:focus-within {
+        outline: 2px solid var(--focus);
+        outline-offset: 4px;
+      }
+    }
+  }
+}
